@@ -1,0 +1,6 @@
+Occurs in two classes: Super and sub class - inheritance is used
+Name and parameters are the same
+Purpose: Use the method in the child class present in the parent
+The return type is always the same
+Run time polymorphism
+Dynamic binding

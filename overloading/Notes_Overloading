@@ -1,0 +1,10 @@
+ Occurs within one class
+ Name of the method is the same but parameters are different
+ Purpose: Increase readability of program
+ Returned type can be same or different
+ Compile time polymorphism
+ Static binding
+
+ **Resources**
+ https://www.youtube.com/watch?v=ryDeTfmSY_o
+ https://www.youtube.com/watch?v=jg4MpYr1TBc
