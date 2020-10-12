@@ -26,7 +26,7 @@ public class ThreadsMain {
 
 		Thread []thread = new Thread[arrNum];
 		for (int i = 0; i < arrNum; i++) {
-			thread[i] = new Thread(hwodyObj, i + " ");
+			thread[i] = new Thread(hwodyObj, "Thread " + i);
 			thread[i].start();
 		}
 		for (int i = 0; i < arrNum; i++) {
