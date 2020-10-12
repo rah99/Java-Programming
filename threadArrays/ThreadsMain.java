@@ -13,7 +13,7 @@ public class ThreadsMain {
 		System.out.print("Enter how many threads you would like in the array: ");
 		while (!scanner.hasNextInt()) {
 			scanner.nextLine();
-			System.out.println("Whole numbers only, please reenter your number of threads: ");
+			System.out.print("Whole numbers only, please reenter your number of threads: ");
 		}
 		num = scanner.nextInt();
 		arrNum = num;
