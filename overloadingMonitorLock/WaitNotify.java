@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class WaitNotify {
 
-	public static int UserInput = 0;
+	public volatile static int UserInput = 0;
 
 	public static void main(String[] args) {
 
