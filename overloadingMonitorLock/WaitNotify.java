@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class WaitNotify {
 
-	public volatile static int UserInput = 0;
+//	public volatile static int UserInput = 0;
 
 	public static void main(String[] args) {
 
@@ -20,7 +20,7 @@ public class WaitNotify {
 					System.out.print("Whole numbers only, please enter a number: ");
 				}
 				num = scanner.nextInt();
-				UserInput = num; // Here as num has 0 value until this point
+//				UserInput = num; // Here as num has 0 value until this point
 				scanner.nextLine();
 
 				System.out.println("You entered " + num);
@@ -37,8 +37,8 @@ public class WaitNotify {
 			CleanHair clean = new CleanHair(); // Single object
 			//		new HairThread("Wet", clean);
 			//		new HairThread("Shampoo", clean);
-			new HairThread("Lather", clean);		
-			new HairThread("Rinse", clean);
+			new HairThread("Lather", clean, num);		
+			new HairThread("Rinse", clean, num);
 			//		new HairThread("Dry", clean);
 
 			//			try {

@@ -4,6 +4,7 @@ public class HairThread extends Thread {
 	private volatile boolean stopNow = false;
 	String name;
 	CleanHair cleanRef;
+	int num;
 
 	public void stopNow (boolean stopNow) {
 		this.stopNow = stopNow;
@@ -13,9 +14,10 @@ public class HairThread extends Thread {
 		this.stopNow = stopNow;
 	}
 
-	public HairThread(String name, CleanHair cleanRef) {
+	public HairThread(String name, CleanHair cleanRef, int num) {
 		this.name = name;
 		this.cleanRef = cleanRef;
+		this.num = num;
 		setName(name);
 		start();
 		try {
@@ -46,7 +48,7 @@ public class HairThread extends Thread {
 		//		}
 		if (name.equals("Lather")) {
 			//				while(true) { cleanRef.Lather(); }
-			for (int i = 0; i < WaitNotify.UserInput; i++) {
+			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Lather();
 				//				} else {
@@ -60,7 +62,7 @@ public class HairThread extends Thread {
 		}
 		if (name.equals("Rinse")) {
 			//				while(true) { cleanRef.Rinse(); }
-			for (int i = 0; i < WaitNotify.UserInput; i++) {
+			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Rinse();
 				//				} else {
