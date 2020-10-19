@@ -56,7 +56,6 @@ public class WaitNotify {
 			//				// TODO Auto-generated catch block
 			//				e.printStackTrace();
 			//			}
-			
 			System.out.print("Would you like to run the program again? (Y/N): ");
 			while (!scanner.hasNext("[/yn|YN/]")) {
 				scanner.nextLine();
