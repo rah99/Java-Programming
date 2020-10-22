@@ -12,6 +12,7 @@ public class SyncApp {
 		// Job 2
 		// This method creates 1 single object of printer
 		Printer printer = new Printer();
+		printer.setTest(0); // 
 		//		printer.printDocuments(10, "RobsProfile.pdf");
 
 		// This method assigns the printer object to the thread running asynchronously aka in parallel, which for this scenario is incorrect...

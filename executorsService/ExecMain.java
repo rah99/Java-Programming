@@ -36,7 +36,7 @@ public class ExecMain {
 //			setter.setID(j);
 			final int ID = j;
 			setID(ID);
-			service.execute(new ServerCPUIntensiveTask());
+			service.submit(new ServerCPUIntensiveTask()); // submit or execute wor
 //			System.out.println("This computer has: " + coreCount + " active cores.");
 		}
 		
