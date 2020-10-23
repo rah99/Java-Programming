@@ -9,24 +9,17 @@ public class ServerCPUIntensiveTask implements Runnable {
 	private int intVal = 0;
 	private int ID = 0;
 	
-//	public void Vars(GetterAndSetter setter) {
-//	}
-	
-	public void run() {
-		for (int i = 0; i < ExecMain.getIntVal(); i++) { // Can use Integer.MAX_VALUE
-			System.out.println(Thread.currentThread().getName() + " " + ExecMain.getID() + " worker " + ": " + fib(new BigInteger(String.valueOf(i))) + " Iterations: " + i);
-		}
-//		System.out.println((10 * 500)/3.44);
-//		System.out.println(Thread.currentThread().getName());
+	public ServerCPUIntensiveTask() {
+		
 	}
 	
-	public static BigInteger fib(BigInteger n) {
-	    if (n.compareTo(BigInteger.ONE) == -1 || n.compareTo(BigInteger.ONE) == 0 ) return n;
-	    else 
-	        return fib(n.subtract(BigInteger.ONE)).add(fib(n.subtract(BigInteger.ONE).subtract(BigInteger.ONE)));
+	public ServerCPUIntensiveTask(int intVal, int iD) {
+		super();
+		this.intVal = intVal;
+		this.ID = iD;
 	}
 	
-	public int getIntVal() {
+	public int getIntVal() { // Getters and Setters are not needed as the value has already been set in the main class?
 		return this.intVal; 
 	}
 	
@@ -40,5 +33,17 @@ public class ServerCPUIntensiveTask implements Runnable {
 	
 	public void setId(int ID) {
 		this.ID = ID;
+	}
+	
+	public void run() {
+		for (int i = 0; i < intVal; i++) { // Can use Integer.MAX_VALUE
+			System.out.println(Thread.currentThread().getName() + " " + ID + " worker " + ": " + fib(new BigInteger(String.valueOf(i))) + " Iterations: " + i);
+		}
+	}
+	
+	public static BigInteger fib(BigInteger n) {
+	    if (n.compareTo(BigInteger.ONE) == -1 || n.compareTo(BigInteger.ONE) == 0 ) return n;
+	    else 
+	        return fib(n.subtract(BigInteger.ONE)).add(fib(n.subtract(BigInteger.ONE).subtract(BigInteger.ONE)));
 	}
 }

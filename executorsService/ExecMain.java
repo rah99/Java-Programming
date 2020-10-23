@@ -8,35 +8,36 @@ import java.util.concurrent.Executors;
 
 public class ExecMain {
 
-	private static int ID = 0;
-	private static int IntVal = 40;
+//	private int ID = 0;
+//	private int IntVal = 0;
 //	private static int IntVal = Integer.MAX_VALUE;
 	
 	public static void main(String[] args) {
 //		int UserInput = 4;
-//		int UserPool = 1;
+//		int UserPool = 10;
 		int coreCount = Runtime.getRuntime().availableProcessors(); // Checks the number of processors available on the machine the program is running on
 //		int Delay = 10;
 //		int iniDelay = 15;
-//		int IntVal = 10;
+		final int IntVal = 40;
 //		int ID = 0;
 		// Getter and Setters
 //		GetterAndSetter setter = new GetterAndSetter();
 //		final int Intval = 10;
 //		
-		setIntVal(IntVal);
+//		setIntVal(IntVal);
 		// **Section One""
 		// All tasks are run simultaneously - multiple threads
 			
 //		// Create thread pool - FixedThreadPool = asynchronous
-////		ExecutorService service = Executors.newFixedThreadPool(UserPool); // IO intensive
+//		ExecutorService service = Executors.newFixedThreadPool(UserPool); // I/O intensive
 		ExecutorService service = Executors.newFixedThreadPool(coreCount); // CPU intensive
+//		((ExecMain) service).setIntVal(40);
 		
 		for (int j = 0; j < coreCount; j++) { // Source = https://stackoverflow.com/questions/15862271/java-compute-intensive-task
 //			setter.setID(j);
 			final int ID = j;
-			setID(ID);
-			service.submit(new ServerCPUIntensiveTask()); // submit or execute wor
+//			((ExecMain) service).setID(j);
+			service.execute(new ServerCPUIntensiveTask(IntVal, ID)); // submit or execute works
 //			System.out.println("This computer has: " + coreCount + " active cores.");
 		}
 		
@@ -103,19 +104,25 @@ public class ExecMain {
 //				return fib(n.subtract(BigInteger.ONE)).add(fib(n.subtract(BigInteger.ONE).subtract(BigInteger.ONE)));
 //		}
 
-	public static int getIntVal() {
-		return IntVal;
-	}
-
-	public synchronized static void setIntVal(int intVal) {
-		IntVal = intVal;
-	}
-
-	public static int getID() {
-		return ID;
-	}
-
-	public synchronized static void setID(int iD) {
-		ID = iD;
-	}
+//	public ExecMain(int iD, int intVal) {
+//		super();
+//		ID = iD;
+//		IntVal = intVal;
+//	}
+//
+//	public int getIntVal() {
+//		return IntVal;
+//	}
+//
+//	public synchronized void setIntVal(int intVal) {
+//		this.IntVal = intVal;
+//	}
+//
+//	public int getID() {
+//		return ID;
+//	}
+//
+//	public synchronized void setID(int iD) {
+//		this.ID = iD;
+//	}
 }
