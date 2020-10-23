@@ -6,8 +6,8 @@ import java.math.BigInteger;
 
 public class ServerCPUIntensiveTask implements Runnable {
 	
-	private int intVal = 0;
-	private int ID = 0;
+	private volatile int intVal = 0;
+	private volatile int ID = 0;
 	
 	public ServerCPUIntensiveTask() {
 		
