@@ -19,21 +19,21 @@ public class ServerCPUIntensiveTask implements Runnable {
 		this.ID = iD;
 	}
 	
-	public int getIntVal() { // Getters and Setters are not needed as the value has already been set in the main class?
-		return this.intVal; 
-	}
-	
-	public int getID() {
-		return this.ID;
-	}
-	
-	public void setIntval(int intVal) {
-		this.intVal = intVal;
-	}
-	
-	public void setId(int ID) {
-		this.ID = ID;
-	}
+//	public int getIntVal() { // Getters and Setters are not needed as the value has already been set in the main class?
+//		return this.intVal; 
+//	}
+//	
+//	public int getID() {
+//		return this.ID;
+//	}
+//	
+//	public void setIntval(int intVal) {
+//		this.intVal = intVal;
+//	}
+//	
+//	public void setId(int ID) {
+//		this.ID = ID;
+//	}
 	
 	public void run() {
 		for (int i = 0; i < intVal; i++) { // Can use Integer.MAX_VALUE
