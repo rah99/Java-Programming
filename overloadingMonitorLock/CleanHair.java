@@ -2,6 +2,21 @@ package overloadingMonitorLock;
 
 public class CleanHair {
 	String currentState = ""; // The object state
+	private volatile boolean running = true;
+	int num;
+	int iter = 0;
+	
+	public int getNum() {
+		return this.num;
+	}
+	
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
+	public void stopNow() {
+		running = false;
+	}
 
 	//	synchronized void Wet() {
 	//		currentState = "Wet";
@@ -34,12 +49,14 @@ public class CleanHair {
 		System.out.println(currentState + " " + Thread.currentThread().getId());
 		notify();
 		try {
-			while (currentState.equals("Lather")) {
-				wait();
+			while (currentState.equals("Lather") && running) {
+						wait();
+						Thread.interrupted();
+				}
 				//				Thread.currentThread().interrupt();
-			}
 		} catch (InterruptedException e) {
-			//			e.printStackTrace();
+						e.printStackTrace();
+						stopNow();
 			//			throw new RuntimeException("Iterrupted", e);
 		}
 	}
@@ -49,12 +66,13 @@ public class CleanHair {
 		System.out.println(currentState + " " + Thread.currentThread().getId());
 		notify();
 		try {
-			while (currentState.equals("Rinse")) {
-				wait();
-				//				Thread.interrupted();
+			while (currentState.equals("Rinse") && running) {
+						wait();
+						Thread.interrupted();
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			stopNow();
 		}
 	}
 

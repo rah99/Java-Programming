@@ -1,17 +1,14 @@
 package overloadingMonitorLock;
 
 public class HairThread extends Thread {
-	private volatile boolean stopNow = false;
+	private volatile boolean running = true;
 	String name;
 	CleanHair cleanRef;
 	int num;
-
-	public void stopNow (boolean stopNow) {
-		this.stopNow = stopNow;
-	}
-
-	public void getStopNow () {
-		this.stopNow = stopNow;
+//	int iter = 0;
+	
+	public void stopNow() {
+		running = false;
 	}
 
 	public HairThread(String name, CleanHair cleanRef, int num) {
@@ -28,7 +25,17 @@ public class HairThread extends Thread {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
+//		if (running && iter < num) {
+//			try {
+//				wait();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		} else {
+//			Thread.interrupted();
+//			stopNow();
+//		}
 	}
 
 	@Override
@@ -51,27 +58,28 @@ public class HairThread extends Thread {
 			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Lather();
-				//				} else {
-				//					stopNow(true);
-				//				}
-				//				if (stopNow) {
-				//					break;
-				//				}
-
 			}
+			//				} else {
+			//					stopNow(true);
+			//				}
+			//				if (stopNow) {
+			//					break;
+			//				}
+
 		}
 		if (name.equals("Rinse")) {
 			//				while(true) { cleanRef.Rinse(); }
+
 			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Rinse();
-				//				} else {
-				//					stopNow(true);
-				//				}
-				//				if (stopNow) {
-				//					break;
-				//				}
 			}
+			//				} else {
+			//					stopNow(true);
+			//				}
+			//				if (stopNow) {
+			//					break;
+			//				}
 		}
 		//		if (name.equals("Dry")) {
 		////			while(true) { cleanRef.Dry(); }
