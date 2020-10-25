@@ -50,13 +50,13 @@ public class CleanHair {
 		notify();
 		try {
 			while (currentState.equals("Lather") && running) {
-						wait();
-						Thread.interrupted();
-				}
-				//				Thread.currentThread().interrupt();
+				wait();
+				Thread.interrupted();
+			}
+			//				Thread.currentThread().interrupt();
 		} catch (InterruptedException e) {
-						e.printStackTrace();
-						stopNow();
+			e.printStackTrace();
+			stopNow();
 			//			throw new RuntimeException("Iterrupted", e);
 		}
 	}
@@ -67,8 +67,8 @@ public class CleanHair {
 		notify();
 		try {
 			while (currentState.equals("Rinse") && running) {
-						wait();
-						Thread.interrupted();
+				wait();
+				Thread.interrupted();
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
