@@ -58,7 +58,10 @@ public class HairThread extends Thread {
 			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Lather();
-			}interrupted();
+				if (Thread.currentThread().isInterrupted()) {
+					break;
+				}
+			}
 			//				} else {
 			//					stopNow(true);
 			//				}
@@ -73,7 +76,10 @@ public class HairThread extends Thread {
 			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Rinse();
-			}interrupted();
+				if (Thread.currentThread().isInterrupted()) {
+					break;
+				}
+			}
 			//				} else {
 			//					stopNow(true);
 			//				}
