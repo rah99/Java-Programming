@@ -17,15 +17,15 @@ public class HairThread extends Thread {
 		this.num = num;
 		setName(name);
 		start();
-		try {
-			sleep(1000);
-			//			if (isAlive()) {
-			//				stopNow(true);
-			//			}
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			sleep(1000);
+//			//			if (isAlive()) {
+//			//				stopNow(true);
+//			//			}
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //		if (running && iter < num) {
 //			try {
 //				wait();
@@ -58,7 +58,14 @@ public class HairThread extends Thread {
 			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Lather();
-				if (Thread.currentThread().isInterrupted()) {
+				if (i == num) {
+					Thread.currentThread().interrupt();
+					try {
+						join();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					break;
 				}
 			}
@@ -76,7 +83,14 @@ public class HairThread extends Thread {
 			for (int i = 0; i < num; i++) {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Rinse();
-				if (Thread.currentThread().isInterrupted()) {
+				if (i == num) {
+					Thread.currentThread().interrupt();
+					try {
+						join();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					break;
 				}
 			}

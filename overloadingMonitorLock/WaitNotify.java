@@ -13,8 +13,8 @@ public class WaitNotify {
 		int num = 0;
 		String choice;
 		Scanner scanner = new Scanner(System.in);
-		Thread mth = Thread.currentThread();
-		System.out.println("I am the main thread and my ID is: " +mth.getId());
+		boolean mth = Thread.currentThread().isDaemon();
+//		System.out.println("I am the main thread and my ID is: " +mth.getId());
 
 		do {
 			do {
@@ -69,6 +69,10 @@ public class WaitNotify {
 		} while (choice.equalsIgnoreCase("Y"));
 		scanner.close();
 		System.exit(0);
+	}
+	
+	public interface ThreadCompleteListener {
+		void notifyOfThreadComplete(final Thread thread);
 	}
 }
 
