@@ -2,6 +2,8 @@ package overloadingMonitorLock;
 
 import java.util.Scanner;
 
+import mainThread.MainThread;
+
 public class WaitNotify {
 
 //	public volatile static int UserInput = 0;
@@ -11,6 +13,8 @@ public class WaitNotify {
 		int num = 0;
 		String choice;
 		Scanner scanner = new Scanner(System.in);
+		Thread mth = Thread.currentThread();
+		System.out.println("I am the main thread and my ID is: " +mth.getId());
 
 		do {
 			do {
