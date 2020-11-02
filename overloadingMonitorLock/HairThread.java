@@ -10,6 +10,10 @@ public class HairThread extends Thread {
 	public void stopNow() {
 		running = false;
 	}
+	
+	public interface ThreadCompleteListener {
+		void notifyOfThreadComplete(final Thread thread);
+	}
 
 	public HairThread(String name, CleanHair cleanRef, int num) {
 		this.name = name;

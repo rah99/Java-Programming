@@ -70,10 +70,6 @@ public class WaitNotify {
 		scanner.close();
 		System.exit(0);
 	}
-	
-	public interface ThreadCompleteListener {
-		void notifyOfThreadComplete(final Thread thread);
-	}
 }
 
 // Try this to solve thread hang at end of program https://stackoverflow.com/questions/16618113/how-to-make-the-main-end-last also look at...
