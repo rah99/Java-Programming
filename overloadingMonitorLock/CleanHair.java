@@ -47,7 +47,7 @@ public class CleanHair {
 	synchronized void Lather() {
 		currentState = "Lather";
 		System.out.println(currentState + " " + Thread.currentThread().getId());
-		notifyAll();
+		notify();
 		try {
 			while (currentState.equals("Lather") && running) {
 				wait();
@@ -64,7 +64,7 @@ public class CleanHair {
 	synchronized void Rinse() {
 		currentState = "Rinse";
 		System.out.println(currentState + " " + Thread.currentThread().getId());
-		notifyAll();
+		notify();
 		try {
 			while (currentState.equals("Rinse") && running) {
 				wait();
@@ -88,4 +88,19 @@ public class CleanHair {
 	//			e.printStackTrace();
 	//		}
 	//	}
+	
+	synchronized void Terminator() {
+		currentState = "Terminator";
+		System.out.println(currentState + " " + Thread.currentThread().getId());
+		notify();
+		try {
+			while (currentState.equals("Terminator") && running) {
+				wait();
+				Thread.interrupted();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			stopNow();
+		}
+	}
 }

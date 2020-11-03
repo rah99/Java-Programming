@@ -43,6 +43,7 @@ public class WaitNotify {
 			//		new HairThread("Shampoo", clean);
 			new HairThread("Lather", clean, num);		
 			new HairThread("Rinse", clean, num);
+			new HairThread("Terminator", clean, num);
 			//		new HairThread("Dry", clean);
 
 			//			try {
@@ -60,6 +61,7 @@ public class WaitNotify {
 			//				// TODO Auto-generated catch block
 			//				e.printStackTrace();
 			//			}
+			HairThread.interrupted();
 			System.out.print("Would you like to run the program again? (Y/N): ");
 			while (!scanner.hasNext("[/yn|YN/]")) {
 				scanner.nextLine();
@@ -69,6 +71,10 @@ public class WaitNotify {
 		} while (choice.equalsIgnoreCase("Y"));
 		scanner.close();
 		System.exit(0);
+	}
+	
+	public interface ThreadCompleteListener {
+		void notifyOfThreadComplete(final Thread thread);
 	}
 }
 

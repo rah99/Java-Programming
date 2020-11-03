@@ -3,9 +3,9 @@ package overloadingMonitorLock;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import overloadingMonitorLock.HairThread.ThreadCompleteListener;
+import overloadingMonitorLock.WaitNotify.ThreadCompleteListener;
 
-public abstract class NotifyingThread extends Thread {
+public abstract class NotifyingThread extends Thread implements ThreadCompleteListener {
 	  private final Set<ThreadCompleteListener> listeners
 	                   = new CopyOnWriteArraySet<ThreadCompleteListener>();
 	  public final void addListener(final ThreadCompleteListener listener) {

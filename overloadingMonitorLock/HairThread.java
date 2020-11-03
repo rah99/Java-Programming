@@ -10,10 +10,6 @@ public class HairThread extends Thread {
 	public void stopNow() {
 		running = false;
 	}
-	
-	public interface ThreadCompleteListener {
-		void notifyOfThreadComplete(final Thread thread);
-	}
 
 	public HairThread(String name, CleanHair cleanRef, int num) {
 		this.name = name;
@@ -21,25 +17,25 @@ public class HairThread extends Thread {
 		this.num = num;
 		setName(name);
 		start();
-//		try {
-//			sleep(1000);
-//			//			if (isAlive()) {
-//			//				stopNow(true);
-//			//			}
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		if (running && iter < num) {
-//			try {
-//				wait();
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		} else {
-//			Thread.interrupted();
-//			stopNow();
-//		}
+////		try {
+////			sleep(1000);
+////			//			if (isAlive()) {
+////			//				stopNow(true);
+////			//			}
+////		} catch (InterruptedException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////		if (running && iter < num) {
+////			try {
+////				wait();
+////			} catch (InterruptedException e) {
+////				e.printStackTrace();
+////			}
+////		} else {
+////			Thread.interrupted();
+////			stopNow();
+////		}
 	}
 
 	@Override
