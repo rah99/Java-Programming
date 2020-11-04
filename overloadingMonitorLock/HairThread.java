@@ -59,8 +59,9 @@ public class HairThread extends Thread {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Lather();
 				if (i == num) {
-					Thread.currentThread().interrupt();
 					try {
+						Thread.currentThread();
+						Thread.sleep(1000);
 						join();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -84,8 +85,9 @@ public class HairThread extends Thread {
 				//				if (!stopNow && i < WaitNotify.UserInput) {
 				cleanRef.Rinse();
 				if (i == num) {
-					Thread.currentThread().interrupt();
 					try {
+						Thread.currentThread();
+						Thread.sleep(1000);
 						join();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
