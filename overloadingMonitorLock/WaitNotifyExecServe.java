@@ -1,6 +1,7 @@
 package overloadingMonitorLock;
 
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -10,8 +11,12 @@ public class WaitNotifyExecServe {
 		int num = 0;
 		String choice;
 		Scanner scanner = new Scanner(System.in);
-		ExecutorService executors = Executors.newCachedThreadPool();
+		ExecutorService executors = Executors.newFixedThreadPool(2);
 		CleanHair clean = new CleanHair();
+		
+		CountDownLatch latch = new CountDownLatch(2);
+		executors.submit(new HairThreadRunnable(latch));
+		executors.submit(new HairThreadRunnable(latch));
 
 		do {
 			do {
@@ -33,6 +38,13 @@ public class WaitNotifyExecServe {
 
 				executors.submit(new HairThreadRunnable("Lather", clean, num));
 				executors.submit(new HairThreadRunnable("Rinse", clean, num));
+				
+				try {
+					latch.await();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 			System.out.print("Would you like to run the program again? (Y/N): ");
 			while (!scanner.hasNext("[/yn|YN/]")) {
