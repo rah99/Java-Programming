@@ -1,7 +1,22 @@
-package overloadingMonitorLock;
+package overloadingMonitorLock_RobTest;
 
 public class CleanHair {
 	String currentState = ""; // The object state
+//	private volatile boolean running = true;
+	int num;
+	int iter = 0;
+
+	public int getNum() {
+		return this.num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+//	public void stopNow() {
+//		running = false;
+//	}
 
 	synchronized void Lather() {
 		currentState = "Lather";
@@ -9,8 +24,7 @@ public class CleanHair {
 		notify();
 		while (currentState.equals("Lather")) {
 			try {
-				Thread.sleep(2000);
-				wait();	
+				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -23,7 +37,6 @@ public class CleanHair {
 		notify();
 		while (currentState.equals("Rinse")) {
 			try {
-				Thread.sleep(2000);
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
