@@ -27,7 +27,7 @@ public class James_Code {
 					e.printStackTrace();
 				}
 				System.out.println("Finished.");
-				return duration;
+				return duration / 1000;
 			}
 		});
 		executor.shutdown();
